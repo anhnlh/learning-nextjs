@@ -6,17 +6,26 @@
         <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
         <!-- Babel Script -->
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>        
-        <script type="text/jsx">
+        <script type="text/babel">
             const app = document.getElementById('app');
 
-            function Header() {
-                return (<h1>Code. Revise. Deploy.</h1>)
+            // destructuring props (aka custom arguments)
+            function Header({ title }) {
+                console.log(title);
+                return (<h1>{`${title} - React`}</h1>);
             }
 
             function HomePage() {
+                const names = ['Ada Lovelace', 'Grace Hopper', 'John von Neumann']
                 return (
                     <div>
-                        <Header />
+                        <Header title="Code. Revise. Deploy." />
+                        <ul>
+                            {names.map((name) => (
+                                <li key={name}>{name}</li>
+                            ))}
+                        </ul>
+                        <Header title="React 😎" />
                     </div>
                 )
             }
